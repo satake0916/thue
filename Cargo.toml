@@ -1,9 +1,13 @@
 [package]
 name = "thue"
 version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+authors = ["satake <satake.syukatsu@gmail.com>"]
+license = "MIT"
+description = "Translate english day of week to japanese one"
+homepage = "https://www.satake.tech/"
+repository = "https://github.com/satake0916/thue"
+keywords = ["cli", "translate", "demo"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 clap = {verstion = "4.4.8", features = ["derive"]}

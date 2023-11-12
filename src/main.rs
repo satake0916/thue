@@ -6,7 +6,7 @@ use clap::Parser;
 #[clap(
     name = "thue",
     author = "satake",
-    version = "v0.1",
+    version = "0.1.0",
     about = "Translate english day of week to japanese one"
 )]
 struct AppArg {
