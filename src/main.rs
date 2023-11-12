@@ -1,4 +1,7 @@
+use std::collections::HashMap;
+
 use clap::{ArgGroup, Parser};
+
 
 #[derive(Parser)]
 #[clap(
@@ -20,10 +23,19 @@ struct AppArg {
 }
 
 fn main() {
+    
+    let en_ja_map: HashMap<String, String> = HashMap::from([
+        (String::from("sun"), String::from("日曜日")),
+        (String::from("mon"), String::from("月曜日")),
+        (String::from("tue"), String::from("火曜日")),
+        (String::from("wed"), String::from("水曜日")),
+        (String::from("thu"), String::from("木曜日")),
+        (String::from("fri"), String::from("金曜日")),
+        (String::from("sat"), String::from("土曜日"))
+    ]);
+
     let arg: AppArg = AppArg::parse();
-    println!(
-        "{}:{}",
-        arg.ja.unwrap_or(String::from("ja nai")),
-        arg.en.unwrap_or(String::from("en nai"))
-    )
+    if arg.en.is_some() {
+        println!("{}", en_ja_map.get(&arg.en.unwrap()).unwrap())
+    }
 }
