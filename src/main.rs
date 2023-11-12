@@ -1,3 +1,5 @@
+extern crate clap;
+
 use std::collections::HashMap;
 
 use clap::Parser;
