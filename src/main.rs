@@ -1,41 +1,47 @@
 use std::collections::HashMap;
 
-use clap::{ArgGroup, Parser};
-
+use clap::Parser;
 
 #[derive(Parser)]
 #[clap(
     name = "thue",
-    author = "satake makoto",
+    author = "satake",
     version = "v0.1",
-    about = "Translate day of week japanese and english",
-)]
-#[clap(group(ArgGroup::new("ja-or-en")
-    .arg("ja")
-    .conflicts_with("en"))
+    about = "Translate english day of week to japanese one"
 )]
 struct AppArg {
-    #[clap(short ='j', long="ja")]
-    ja: Option<String>,
-
-    #[clap(short = 'e', long = "en")]
-    en: Option<String>
+    en: Option<String>,
 }
 
 fn main() {
-    
-    let en_ja_map: HashMap<String, String> = HashMap::from([
+    let en_ja_list = [
         (String::from("sun"), String::from("日曜日")),
         (String::from("mon"), String::from("月曜日")),
         (String::from("tue"), String::from("火曜日")),
         (String::from("wed"), String::from("水曜日")),
         (String::from("thu"), String::from("木曜日")),
         (String::from("fri"), String::from("金曜日")),
-        (String::from("sat"), String::from("土曜日"))
-    ]);
+        (String::from("sat"), String::from("土曜日")),
+    ];
+
+    let en_ja_map: HashMap<String, String> = HashMap::from(en_ja_list.clone());
 
     let arg: AppArg = AppArg::parse();
     if arg.en.is_some() {
-        println!("{}", en_ja_map.get(&arg.en.unwrap()).unwrap())
+        let enceded = arg.en.unwrap().to_lowercase();
+        println!(
+            "{}",
+            en_ja_map
+                .get(&enceded)
+                .unwrap_or(&String::from("not day of week"))
+        );
+    } else {
+        en_ja_list.iter().for_each(|(en, ja)| {
+            println!(
+                "{}\t{}",
+                en.chars().nth(0).unwrap().to_uppercase().to_string() + &en[1..] + &".",
+                ja
+            );
+        })
     }
 }
