@@ -10,4 +10,4 @@ keywords = ["cli", "translate", "demo"]
 categories = ["command-line-utilities"]
 
 [dependencies]
-clap = {verstion = "4.4.8", features = ["derive"]}
+clap = {version = "4.4.8", features = ["derive"]}
