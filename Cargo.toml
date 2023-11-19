@@ -1,9 +1,9 @@
 [package]
 name = "thue"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["satake <satake.syukatsu@gmail.com>"]
 license = "MIT"
-description = "Translate english day of week to japanese one"
+description = "英語表記の曜日を日本語表記に変換します。Translate english day of week to japanese one."
 homepage = "https://www.satake.tech/"
 repository = "https://github.com/satake0916/thue"
 keywords = ["cli", "translate", "demo"]
